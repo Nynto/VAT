@@ -9,20 +9,6 @@ import java.util.ArrayList;
 
 public class ObjectIO {
 
-    public static void writeObjectsFile(ArrayList<?> forms) {
-        try {
-            FileOutputStream f = new FileOutputStream(new File("formObjects.txt"));
-            ObjectOutputStream o = new ObjectOutputStream(f);
-
-            o.writeObject(forms);
-
-            o.close();
-            f.close();
-        } catch (IOException e) {
-            System.out.println("Error initializing stream");
-        }
-    }
-
     public static void writeBlockFile(ArrayList<Block> blocks) {
         try {
             FileOutputStream f = new FileOutputStream(new File("blockObjects.txt"));
