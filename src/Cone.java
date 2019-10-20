@@ -3,8 +3,8 @@ public class Cone extends Form {
     private double radius;
     private double height;
 
-    public Cone(String name, double radius, double height) {
-        super(name);
+    public Cone(int id, double radius, double height) {
+        super(id);
         this.radius = radius;
         this.height = height;
     }

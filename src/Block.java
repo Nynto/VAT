@@ -3,8 +3,8 @@ public class Block extends Form {
     private double width;
     private double height;
 
-    public Block(String name, double length, double width, double height) {
-        super(name);
+    public Block(int id, double length, double width, double height) {
+        super(id);
         this.length = length;
         this.width = width;
         this.height = height;

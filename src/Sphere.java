@@ -2,8 +2,8 @@ public class Sphere extends Form {
 
     private double radius;
 
-    public Sphere(String name, double radius) {
-        super(name);
+    public Sphere(int id, double radius) {
+        super(id);
         this.radius = radius;
     }
 
