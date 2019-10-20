@@ -4,7 +4,7 @@ public class Block extends Form {
     private double height;
 
     public Block(int id, double length, double width, double height) {
-        super(id);
+        super(id, "Block");
         this.length = length;
         this.width = width;
         this.height = height;
@@ -36,5 +36,10 @@ public class Block extends Form {
 
     public double calculateVolume() {
         return this.length * this.width * this.height;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + id + ") volume: " + calculateVolume();
     }
 }

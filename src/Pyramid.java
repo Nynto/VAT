@@ -4,7 +4,7 @@ public class Pyramid extends Form {
     private double height;
 
     public Pyramid(int id, double length, double width, double height) {
-        super(id);
+        super(id, "Pyramid");
         this.length = length;
         this.width = width;
         this.height = height;
@@ -36,5 +36,10 @@ public class Pyramid extends Form {
 
     public double calculateVolume() {
         return (this.length * this.width * this.height) / 3;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + id + ") volume: " + calculateVolume();
     }
 }

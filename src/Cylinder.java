@@ -4,7 +4,7 @@ public class Cylinder extends Form {
     private double height;
 
     public Cylinder(int id, double radius, double height) {
-        super(id);
+        super(id, "Cylinder");
         this.radius = radius;
         this.height = height;
     }
@@ -27,5 +27,10 @@ public class Cylinder extends Form {
 
     public double calculateVolume() {
         return Math.PI * Math.pow(this.radius, 2) * this.height;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + id + ") volume: " + calculateVolume();
     }
 }

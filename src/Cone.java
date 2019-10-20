@@ -4,7 +4,7 @@ public class Cone extends Form {
     private double height;
 
     public Cone(int id, double radius, double height) {
-        super(id);
+        super(id, "Cone");
         this.radius = radius;
         this.height = height;
     }
@@ -27,5 +27,10 @@ public class Cone extends Form {
 
     public double calculateVolume() {
         return (Math.PI * Math.pow(this.radius, 2) * this.height) / 3;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + id + ") volume: " + calculateVolume();
     }
 }

@@ -40,63 +40,67 @@ public class Main {
         blocks.add(vijfde);
         blocks.add(zesde);
 
-        ObjectIO.writeBlockFile(blocks);
-
-        Cone eersteCone = new Cone(1, 5.7, 3.45);
-        Cone tweedeCone = new Cone(2, 5.7, 3.45);
-
-        ArrayList<Cone> cones = new ArrayList<>();
-
-        cones.add(eersteCone);
-        cones.add(tweedeCone);
-
-        ObjectIO.writeConeFile(cones);
-
-        Cylinder eersteCyl = new Cylinder(1, 5.7, 3.45);
-        Cylinder tweedeCyl = new Cylinder(2, 5.7, 3.45);
-
-        ArrayList<Cylinder> cylinders = new ArrayList<>();
-
-        cylinders.add(eersteCyl);
-        cylinders.add(tweedeCyl);
-
-        ObjectIO.writeCylinderFile(cylinders);
-
-        Pyramid eerstePyr = new Pyramid(1, 5.7, 3.45, 10);
-
-        ArrayList<Pyramid> pyramids = new ArrayList<>();
-
-        pyramids.add(eerstePyr);
-
-        ObjectIO.writePyramidFile(pyramids);
-
-        Sphere eersteSp = new Sphere(1, 5.7);
-        Sphere tweedeSp = new Sphere(2, 5.7);
-
-        ArrayList<Sphere> spheres = new ArrayList<>();
-
-        spheres.add(eersteSp);
-        spheres.add(tweedeSp);
-
-        ObjectIO.writeSphereFile(spheres);
-
-        ArrayList<Block> infoUitFile = ObjectIO.readBlockFile();
-
-        for (Block block : infoUitFile) {
-            System.out.println(block.getId());
+        for (Block block : blocks) {
+            System.out.println(block);
         }
 
-        ArrayList<Cone> conesUitFile = ObjectIO.readConeFile();
-
-        for (Cone cone : conesUitFile) {
-            System.out.println(cone.getId());
-        }
-
-        ArrayList<Cylinder> cylindersUitFile = ObjectIO.readCylinderFile();
-
-        for (Cylinder cylinder : cylindersUitFile) {
-            System.out.println(cylinder.getId());
-        }
+//        ObjectIO.writeBlockFile(blocks);
+//
+//        Cone eersteCone = new Cone(1, 5.7, 3.45);
+//        Cone tweedeCone = new Cone(2, 5.7, 3.45);
+//
+//        ArrayList<Cone> cones = new ArrayList<>();
+//
+//        cones.add(eersteCone);
+//        cones.add(tweedeCone);
+//
+//        ObjectIO.writeConeFile(cones);
+//
+//        Cylinder eersteCyl = new Cylinder(1, 5.7, 3.45);
+//        Cylinder tweedeCyl = new Cylinder(2, 5.7, 3.45);
+//
+//        ArrayList<Cylinder> cylinders = new ArrayList<>();
+//
+//        cylinders.add(eersteCyl);
+//        cylinders.add(tweedeCyl);
+//
+//        ObjectIO.writeCylinderFile(cylinders);
+//
+//        Pyramid eerstePyr = new Pyramid(1, 5.7, 3.45, 10);
+//
+//        ArrayList<Pyramid> pyramids = new ArrayList<>();
+//
+//        pyramids.add(eerstePyr);
+//
+//        ObjectIO.writePyramidFile(pyramids);
+//
+//        Sphere eersteSp = new Sphere(1, 5.7);
+//        Sphere tweedeSp = new Sphere(2, 5.7);
+//
+//        ArrayList<Sphere> spheres = new ArrayList<>();
+//
+//        spheres.add(eersteSp);
+//        spheres.add(tweedeSp);
+//
+//        ObjectIO.writeSphereFile(spheres);
+//
+//        ArrayList<Block> infoUitFile = ObjectIO.readBlockFile();
+//
+//        for (Block block : infoUitFile) {
+//            System.out.println(block.getId());
+//        }
+//
+//        ArrayList<Cone> conesUitFile = ObjectIO.readConeFile();
+//
+//        for (Cone cone : conesUitFile) {
+//            System.out.println(cone.getId());
+//        }
+//
+//        ArrayList<Cylinder> cylindersUitFile = ObjectIO.readCylinderFile();
+//
+//        for (Cylinder cylinder : cylindersUitFile) {
+//            System.out.println(cylinder.getId());
+//        }
 
 //        SQL.addBlock(eerste);
 //        SQL.addBlock(tweede);
