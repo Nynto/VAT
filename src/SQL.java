@@ -54,6 +54,22 @@ public class SQL {
         }
     }
 
+    public static void deleteBlock(Block block) {
+        DatabaseConnection dbc = new DatabaseConnection();
+        dbc.connectToDatabase(url,user,password);
+
+        ArrayList<Block> blocks = new ArrayList<>();
+        PreparedStatement statement = null;
+        try {
+            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.block WHERE `ID` = ?;");
+            statement.setInt(1, block.getId());
+            dbc.delete(statement);
+            dbc.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ArrayList<Cone> readCones()  {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
