@@ -113,6 +113,22 @@ public class SQL {
         }
     }
 
+    public static void deleteCone(Cone cone) {
+        DatabaseConnection dbc = new DatabaseConnection();
+        dbc.connectToDatabase(url,user,password);
+
+        ArrayList<Cone> cones = new ArrayList<>();
+        PreparedStatement statement = null;
+        try {
+            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.cone WHERE `ID` = ?;");
+            statement.setInt(1, cone.getId());
+            dbc.delete(statement);
+            dbc.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ArrayList<Cylinder> readCylinders()  {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
@@ -150,6 +166,22 @@ public class SQL {
             statement.setDouble(2, cylinder.getRadius());
             statement.setDouble(3, cylinder.getHeight());
             dbc.insert(statement);
+            dbc.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteCylinder(Cylinder cylinder) {
+        DatabaseConnection dbc = new DatabaseConnection();
+        dbc.connectToDatabase(url,user,password);
+
+        ArrayList<Cylinder> cylinders = new ArrayList<>();
+        PreparedStatement statement = null;
+        try {
+            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.cylinder WHERE `ID` = ?;");
+            statement.setInt(1, cylinder.getId());
+            dbc.delete(statement);
             dbc.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -201,6 +233,22 @@ public class SQL {
         }
     }
 
+    public static void deletePyramid(Pyramid pyramid) {
+        DatabaseConnection dbc = new DatabaseConnection();
+        dbc.connectToDatabase(url,user,password);
+
+        ArrayList<Pyramid> pyramids = new ArrayList<>();
+        PreparedStatement statement = null;
+        try {
+            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.pyramid WHERE `ID` = ?;");
+            statement.setInt(1, pyramid.getId());
+            dbc.delete(statement);
+            dbc.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static ArrayList<Sphere> readSpheres()  {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
@@ -236,6 +284,22 @@ public class SQL {
             statement.setInt(1, sphere.getId());
             statement.setDouble(2, sphere.getRadius());
             dbc.insert(statement);
+            dbc.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteSphere(Sphere sphere) {
+        DatabaseConnection dbc = new DatabaseConnection();
+        dbc.connectToDatabase(url,user,password);
+
+        ArrayList<Sphere> spheres = new ArrayList<>();
+        PreparedStatement statement = null;
+        try {
+            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.sphere WHERE `ID` = ?;");
+            statement.setInt(1, sphere.getId());
+            dbc.delete(statement);
             dbc.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
