@@ -3,8 +3,8 @@ public class Pyramid extends Form {
     private double width;
     private double height;
 
-    public Pyramid(int id, double length, double width, double height) {
-        super(id);
+    public Pyramid(String name, double length, double width, double height) {
+        super(name);
         this.length = length;
         this.width = width;
         this.height = height;

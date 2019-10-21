@@ -1,10 +1,11 @@
 public class Cone extends Form {
 
+    public static Object calculateVolume;
     private double radius;
     private double height;
 
-    public Cone(int id, double radius, double height) {
-        super(id);
+    public Cone(String name, double radius, double height) {
+        super(name);
         this.radius = radius;
         this.height = height;
     }

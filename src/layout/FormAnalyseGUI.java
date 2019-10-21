@@ -20,27 +20,28 @@ public abstract class FormAnalyseGUI extends JPanel implements Runnable {
         String TITLE_TEXT = "Calculating Device for Forms";
 
         JLabel titleLabel = new JLabel(TITLE_TEXT, SwingConstants.CENTER);
-            titleLabel.setFont(titleLabel.getFont().deriveFont(TITLE_SIZE));
+        titleLabel.setFont(titleLabel.getFont().deriveFont(TITLE_SIZE));
         JPanel titlePanel = new JPanel();
-            titlePanel.add(titleLabel);
+        titlePanel.add(titleLabel);
 
         String[] allForms = {"Choose a form!", "Block", "Cone", "Cylinder", "Pyramid", "Sphere"};
 
         JPanel comboPanel = new JPanel(new GridLayout(2, 0, 5, 0));
-            JComboBox comboForms = new JComboBox(allForms);
-                comboForms.setSelectedIndex(4);
-                comboForms.setSelectedItem("Choose a form!");
-                comboForms.setPreferredSize(new Dimension(100, 30));
-                comboPanel.add(comboForms);
+        JComboBox comboForms = new JComboBox(allForms);
+        comboForms.setSelectedIndex(4);
+        comboForms.setSelectedItem("Choose a form!");
+        comboForms.setPreferredSize(new Dimension(100, 30));
+        comboPanel.add(comboForms);
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 0, 5, 0));
-            JButton btnCreate = new JButton("Create");
-            JButton btnDelete = new JButton("Delete");
+        JButton btnCreate = new JButton("Create");
+        JButton btnDelete = new JButton("Delete");
 
-            buttonPanel.add(btnCreate);
-            buttonPanel.add(btnDelete);
 
-            btnCreate.addActionListener(e ->
+        buttonPanel.add(btnCreate);
+        buttonPanel.add(btnDelete);
+
+        btnCreate.addActionListener(e ->
                     {
                         if (comboForms.getSelectedItem().equals("Choose a form!")) {
                             JOptionPane.showMessageDialog(null, "Choose a form before you proceed.");
@@ -65,11 +66,12 @@ public abstract class FormAnalyseGUI extends JPanel implements Runnable {
                             SphereGUI sphere = new SphereGUI();
                             sphere.run();
                         }
-                });
+                    });
+
 
 
         JList listForms = new JList();
-            listForms.setModel(new AbstractListModel() {
+        listForms.setModel(new AbstractListModel() {
                 String[] strings = {"Test1", "Test2", "Test3"};
                     @Override
                     public int getSize() {
@@ -81,10 +83,11 @@ public abstract class FormAnalyseGUI extends JPanel implements Runnable {
                     }
             });
 
-            btnDelete.addActionListener(e ->
-            {
+        btnDelete.addActionListener(e -> {
+            System.out.println(listForms.getSelectedValue());
+        });
 
-            });
+
         JPanel buttonPanel2 = new JPanel(new GridLayout(2,3));
         JButton btnSave = new JButton("Save");
         JButton btnLoad = new JButton("Load");

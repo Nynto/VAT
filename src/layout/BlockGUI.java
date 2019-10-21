@@ -70,7 +70,7 @@ public class BlockGUI extends JPanel implements Runnable {
 
                     try {
                         double volume = blockHeight * blockWidth * blockLength;
-                        System.out.println(volume);
+                        System.out.println("Block(L:" + blockLength + " - W:" + blockWidth + " - H:" + blockHeight + ") Volume = " + volume);
                     }
                     catch( NumberFormatException nfe ) {
                         uitvoervak.setText( "Please fill in numbers." );

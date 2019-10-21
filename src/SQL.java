@@ -9,18 +9,18 @@ public class SQL {
     private static String user = "root";
     private static String password = "";
 
-    public static ArrayList<Block> readBlocks()  {
+    public static ArrayList<Block> readBlocks() {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Block> blocks = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.block;");
             ResultSet res = dbc.select(statement);
-            while(res.next()){
+            while (res.next()) {
                 Block block = new Block(
-                        res.getInt("ID"),
+                        res.getString("ID"),
                         res.getDouble("length"),
                         res.getDouble("width"),
                         res.getDouble("height")
@@ -37,13 +37,13 @@ public class SQL {
 
     public static void addBlock(Block block) {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Block> blocks = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("INSERT INTO vat.block (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
-            statement.setInt(1, block.getId());
+//            statement.setInt(1, block.getId());
             statement.setDouble(2, block.getLength());
             statement.setDouble(3, block.getWidth());
             statement.setDouble(4, block.getHeight());
@@ -54,18 +54,18 @@ public class SQL {
         }
     }
 
-    public static ArrayList<Cone> readCones()  {
+    public static ArrayList<Cone> readCones() {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Cone> cones = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.cone;");
             ResultSet res = dbc.select(statement);
-            while(res.next()){
+            while (res.next()) {
                 Cone cone = new Cone(
-                        res.getInt("ID"),
+                        res.getString("ID"),
                         res.getDouble("radius"),
                         res.getDouble("height")
                 );
@@ -81,13 +81,13 @@ public class SQL {
 
     public static void addCone(Cone cone) {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Cone> cones = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cone (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
-            statement.setInt(1, cone.getId());
+//            statement.setInt(1, cone.getId());
             statement.setDouble(2, cone.getRadius());
             statement.setDouble(3, cone.getHeight());
             dbc.insert(statement);
@@ -97,18 +97,18 @@ public class SQL {
         }
     }
 
-    public static ArrayList<Cylinder> readCylinders()  {
+    public static ArrayList<Cylinder> readCylinders() {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Cylinder> cylinders = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.cylinder;");
             ResultSet res = dbc.select(statement);
-            while(res.next()){
+            while (res.next()) {
                 Cylinder cylinder = new Cylinder(
-                        res.getInt("ID"),
+                        res.getString("ID"),
                         res.getDouble("radius"),
                         res.getDouble("height")
                 );
@@ -124,13 +124,13 @@ public class SQL {
 
     public static void addCylinder(Cylinder cylinder) {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Cylinder> cylinders = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cylinder (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
-            statement.setInt(1, cylinder.getId());
+//            statement.setInt(1, cylinder.getId());
             statement.setDouble(2, cylinder.getRadius());
             statement.setDouble(3, cylinder.getHeight());
             dbc.insert(statement);
@@ -140,18 +140,18 @@ public class SQL {
         }
     }
 
-    public static ArrayList<Pyramid> readPyramids()  {
+    public static ArrayList<Pyramid> readPyramids() {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Pyramid> pyramids = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.pyramid;");
             ResultSet res = dbc.select(statement);
-            while(res.next()){
+            while (res.next()) {
                 Pyramid pyramid = new Pyramid(
-                        res.getInt("ID"),
+                        res.getString("ID"),
                         res.getDouble("length"),
                         res.getDouble("width"),
                         res.getDouble("height")
@@ -168,13 +168,13 @@ public class SQL {
 
     public static void addPyramid(Pyramid pyramid) {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Pyramid> pyramids = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("INSERT INTO vat.pyramid (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
-            statement.setInt(1, pyramid.getId());
+//            statement.setInt(1, pyramid.getId());
             statement.setDouble(2, pyramid.getLength());
             statement.setDouble(3, pyramid.getWidth());
             statement.setDouble(4, pyramid.getHeight());
@@ -185,18 +185,18 @@ public class SQL {
         }
     }
 
-    public static ArrayList<Sphere> readSpheres()  {
+    public static ArrayList<Sphere> readSpheres() {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Sphere> spheres = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.sphere;");
             ResultSet res = dbc.select(statement);
-            while(res.next()){
+            while (res.next()) {
                 Sphere sphere = new Sphere(
-                        res.getInt("ID"),
+                        res.getString("ID"),
                         res.getDouble("radius")
                 );
                 spheres.add(sphere);
@@ -211,13 +211,13 @@ public class SQL {
 
     public static void addSphere(Sphere sphere) {
         DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
+        dbc.connectToDatabase(url, user, password);
 
         ArrayList<Sphere> spheres = new ArrayList<>();
         PreparedStatement statement = null;
         try {
             statement = dbc.getConnection().prepareStatement("INSERT INTO vat.sphere (`ID`, `radius`) VALUES (?, ?);");
-            statement.setInt(1, sphere.getId());
+//            statement.setInt(1, sphere.getId());
             statement.setDouble(2, sphere.getRadius());
             dbc.insert(statement);
             dbc.closeConnection();

@@ -7,27 +7,27 @@ public class DatabaseConnection {
     public DatabaseConnection() {
     }
 
-    public Connection getConnection(){
-        if(con != null){
+    public Connection getConnection() {
+        if (con != null) {
             return con;
         }
         System.out.println("Could not return a connection");
         return null;
     }
 
-    public void connectToDatabase(String url, String user, String password){
-        try{
+    public void connectToDatabase(String url, String user, String password) {
+        try {
             this.con = DriverManager.getConnection(
                     url, user, password
             );
             System.out.println("Connected to database");
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Could not connect to database");
             e.printStackTrace();
         }
     }
 
-    public void closeConnection(){
+    public void closeConnection() {
         try {
             con.close();
         } catch (SQLException e) {
@@ -35,7 +35,7 @@ public class DatabaseConnection {
         }
     }
 
-    public ResultSet select(PreparedStatement statement){
+    public ResultSet select(PreparedStatement statement) {
         ResultSet rs = null;
         try {
             rs = statement.executeQuery();
@@ -46,14 +46,13 @@ public class DatabaseConnection {
         }
     }
 
-    public boolean insert(PreparedStatement statement){
+    public boolean insert(PreparedStatement statement) {
         try {
             int inserted = statement.executeUpdate();
-            if(inserted>0){
+            if (inserted > 0) {
                 System.out.println("Inserted Succesfully");
                 return true;
-            }
-            else{
+            } else {
                 System.out.println("Could not insert item");
                 return false;
             }
@@ -63,14 +62,13 @@ public class DatabaseConnection {
         }
     }
 
-    public boolean delete(PreparedStatement statement){
+    public boolean delete(PreparedStatement statement) {
         try {
             int deleted = statement.executeUpdate();
-            if(deleted>0){
+            if (deleted > 0) {
                 System.out.println("Removed Succesfully");
                 return true;
-            }
-            else{
+            } else {
                 System.out.println("Could not remove item");
                 return false;
             }

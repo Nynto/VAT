@@ -3,8 +3,8 @@ public class Cylinder extends Form {
     private double radius;
     private double height;
 
-    public Cylinder(int id, double radius, double height) {
-        super(id);
+    public Cylinder(String name, double radius, double height) {
+        super(name);
         this.radius = radius;
         this.height = height;
     }
