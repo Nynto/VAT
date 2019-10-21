@@ -1,3 +1,5 @@
+import com.sun.xml.internal.ws.binding.FeatureListUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,48 +42,69 @@ public class Main {
         blocks.add(vijfde);
         blocks.add(zesde);
 
-        for (Block block : blocks) {
-            System.out.println(block);
-        }
+//        for (Block block : blocks) {
+//            System.out.println(block);
+//        }
 
 //        ObjectIO.writeBlockFile(blocks);
 //
-//        Cone eersteCone = new Cone(1, 5.7, 3.45);
-//        Cone tweedeCone = new Cone(2, 5.7, 3.45);
-//
-//        ArrayList<Cone> cones = new ArrayList<>();
-//
-//        cones.add(eersteCone);
-//        cones.add(tweedeCone);
+        Cone eersteCone = new Cone(1, 5.7, 3.45);
+        Cone tweedeCone = new Cone(2, 5.7, 3.45);
+
+        ArrayList<Cone> cones = new ArrayList<>();
+
+        cones.add(eersteCone);
+        cones.add(tweedeCone);
 //
 //
 //        ObjectIO.writeConeFile(cones);
 //
-//        Cylinder eersteCyl = new Cylinder(1, 5.7, 3.45);
-//        Cylinder tweedeCyl = new Cylinder(2, 5.7, 3.45);
-//
-//        ArrayList<Cylinder> cylinders = new ArrayList<>();
-//
-//        cylinders.add(eersteCyl);
-//        cylinders.add(tweedeCyl);
+        Cylinder eersteCyl = new Cylinder(1, 5.7, 3.45);
+        Cylinder tweedeCyl = new Cylinder(2, 5.7, 3.45);
+
+        ArrayList<Cylinder> cylinders = new ArrayList<>();
+
+        cylinders.add(eersteCyl);
+        cylinders.add(tweedeCyl);
 //
 //        ObjectIO.writeCylinderFile(cylinders);
 //
-//        Pyramid eerstePyr = new Pyramid(1, 5.7, 3.45, 10);
-//
-//        ArrayList<Pyramid> pyramids = new ArrayList<>();
-//
-//        pyramids.add(eerstePyr);
+        Pyramid eerstePyr = new Pyramid(1, 5.7, 3.45, 10);
+
+        ArrayList<Pyramid> pyramids = new ArrayList<>();
+
+        pyramids.add(eerstePyr);
 //
 //        ObjectIO.writePyramidFile(pyramids);
 //
-//        Sphere eersteSp = new Sphere(1, 5.7);
-//        Sphere tweedeSp = new Sphere(2, 5.7);
-//
-//        ArrayList<Sphere> spheres = new ArrayList<>();
-//
-//        spheres.add(eersteSp);
-//        spheres.add(tweedeSp);
+        Sphere eersteSp = new Sphere(1, 5.7);
+        Sphere tweedeSp = new Sphere(2, 5.7);
+
+        ArrayList<Sphere> spheres = new ArrayList<>();
+
+        spheres.add(eersteSp);
+        spheres.add(tweedeSp);
+
+        double totalVolume = 0;
+        for (Block block : blocks) {
+            totalVolume += block.calculateVolume();
+        }
+        for (Cone cone : cones) {
+            totalVolume += cone.calculateVolume();
+        }
+        for (Cylinder cylinder : cylinders) {
+            totalVolume += cylinder.calculateVolume();
+        }
+        for (Pyramid pyramid : pyramids) {
+            totalVolume += pyramid.calculateVolume();
+        }
+        for (Sphere sphere : spheres) {
+            totalVolume += sphere.calculateVolume();
+        }
+
+        System.out.println(totalVolume);
+
+//        System.out.println(allForms);
 //
 //        ObjectIO.writeSphereFile(spheres);
 //

@@ -35,22 +35,23 @@ public class SQL {
         return blocks;
     }
 
-    public static void addBlock(Block block) {
+    public static void addBlocks(ArrayList<Block> blocks) {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        ArrayList<Block> blocks = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("INSERT INTO vat.block (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
-            statement.setInt(1, block.getId());
-            statement.setDouble(2, block.getLength());
-            statement.setDouble(3, block.getWidth());
-            statement.setDouble(4, block.getHeight());
-            dbc.insert(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Block block : blocks) {
+            PreparedStatement statement = null;
+            try {
+                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.block (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
+                statement.setInt(1, block.getId());
+                statement.setDouble(2, block.getLength());
+                statement.setDouble(3, block.getWidth());
+                statement.setDouble(4, block.getHeight());
+                dbc.insert(statement);
+                dbc.closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -95,21 +96,22 @@ public class SQL {
         return cones;
     }
 
-    public static void addCone(Cone cone) {
+    public static void addCones(ArrayList<Cone> cones) {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        ArrayList<Cone> cones = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cone (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
-            statement.setInt(1, cone.getId());
-            statement.setDouble(2, cone.getRadius());
-            statement.setDouble(3, cone.getHeight());
-            dbc.insert(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Cone cone : cones) {
+            PreparedStatement statement = null;
+            try {
+                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cone (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
+                statement.setInt(1, cone.getId());
+                statement.setDouble(2, cone.getRadius());
+                statement.setDouble(3, cone.getHeight());
+                dbc.insert(statement);
+                dbc.closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -154,21 +156,22 @@ public class SQL {
         return cylinders;
     }
 
-    public static void addCylinder(Cylinder cylinder) {
+    public static void addCylinders(ArrayList<Cylinder> cylinders) {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        ArrayList<Cylinder> cylinders = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cylinder (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
-            statement.setInt(1, cylinder.getId());
-            statement.setDouble(2, cylinder.getRadius());
-            statement.setDouble(3, cylinder.getHeight());
-            dbc.insert(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Cylinder cylinder : cylinders) {
+            PreparedStatement statement = null;
+            try {
+                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cylinder (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
+                statement.setInt(1, cylinder.getId());
+                statement.setDouble(2, cylinder.getRadius());
+                statement.setDouble(3, cylinder.getHeight());
+                dbc.insert(statement);
+                dbc.closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -214,22 +217,23 @@ public class SQL {
         return pyramids;
     }
 
-    public static void addPyramid(Pyramid pyramid) {
+    public static void addPyramids(ArrayList<Pyramid> pyramids) {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        ArrayList<Pyramid> pyramids = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("INSERT INTO vat.pyramid (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
-            statement.setInt(1, pyramid.getId());
-            statement.setDouble(2, pyramid.getLength());
-            statement.setDouble(3, pyramid.getWidth());
-            statement.setDouble(4, pyramid.getHeight());
-            dbc.insert(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Pyramid pyramid : pyramids) {
+            PreparedStatement statement = null;
+            try {
+                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.pyramid (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
+                statement.setInt(1, pyramid.getId());
+                statement.setDouble(2, pyramid.getLength());
+                statement.setDouble(3, pyramid.getWidth());
+                statement.setDouble(4, pyramid.getHeight());
+                dbc.insert(statement);
+                dbc.closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -273,20 +277,21 @@ public class SQL {
         return spheres;
     }
 
-    public static void addSphere(Sphere sphere) {
+    public static void addSpheres(ArrayList<Sphere> spheres) {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        ArrayList<Sphere> spheres = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("INSERT INTO vat.sphere (`ID`, `radius`) VALUES (?, ?);");
-            statement.setInt(1, sphere.getId());
-            statement.setDouble(2, sphere.getRadius());
-            dbc.insert(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Sphere sphere : spheres) {
+            PreparedStatement statement = null;
+            try {
+                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.sphere (`ID`, `radius`) VALUES (?, ?);");
+                statement.setInt(1, sphere.getId());
+                statement.setDouble(2, sphere.getRadius());
+                dbc.insert(statement);
+                dbc.closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
