@@ -1,29 +1,43 @@
 import java.io.Serializable;
 
-public class Form implements Serializable {
+abstract class Form implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    protected int id;
     protected String name;
+    protected String type;
+    protected double length;
+    protected double width;
+    protected double height;
+    protected double radius;
 
-    public Form(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    abstract public double calculateVolume();
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getType() {
+        return type;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    @Override
+    public String toString() {
+        return name + " volume: " + calculateVolume();
     }
 }

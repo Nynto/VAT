@@ -3,8 +3,9 @@ public class Cylinder extends Form {
     private double radius;
     private double height;
 
-    public Cylinder(int id, double radius, double height) {
-        super(id, "Cylinder");
+    public Cylinder(double radius, double height) {
+        this.name = "Cylinder " + radius + " " + height;
+        this.type = "cylinder";
         this.radius = radius;
         this.height = height;
     }
@@ -13,24 +14,11 @@ public class Cylinder extends Form {
         return radius;
     }
 
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
     public double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
     public double calculateVolume() {
-        return Math.PI * Math.pow(this.radius, 2) * this.height;
-    }
-
-    @Override
-    public String toString() {
-        return name + " (" + id + ") volume: " + calculateVolume();
+        return Math.PI * Math.pow(radius, 2) * height;
     }
 }

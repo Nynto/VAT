@@ -2,8 +2,9 @@ public class Sphere extends Form {
 
     private double radius;
 
-    public Sphere(int id, double radius) {
-        super(id, "Sphere");
+    public Sphere(double radius) {
+        this.name = "Sphere " + radius;
+        this.type = "sphere";
         this.radius = radius;
     }
 
@@ -11,16 +12,7 @@ public class Sphere extends Form {
         return radius;
     }
 
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
     public double calculateVolume() {
-        return (Math.PI * Math.pow(this.radius, 3)) * 4 / 3;
-    }
-
-    @Override
-    public String toString() {
-        return name + " (" + id + ") volume: " + calculateVolume();
+        return (Math.PI * Math.pow(radius, 3)) * 4 / 3;
     }
 }

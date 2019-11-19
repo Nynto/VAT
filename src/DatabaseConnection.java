@@ -63,17 +63,11 @@ public class DatabaseConnection {
         }
     }
 
-    public boolean delete(PreparedStatement statement){
+    public boolean truncate(PreparedStatement statement){
         try {
-            int deleted = statement.executeUpdate();
-            if(deleted>0){
-                System.out.println("Removed Succesfully");
-                return true;
-            }
-            else{
-                System.out.println("Could not remove item");
-                return false;
-            }
+            statement.executeUpdate();
+            System.out.println("Truncated Succesfully");
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

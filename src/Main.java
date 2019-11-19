@@ -5,12 +5,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new FormAnalyseGUI() {
-            @Override
-            public void run() {
-                super.run();
-            }
-        });
+        Form form1 = new Block(2, 5, 3);
+//        System.out.println(form1.getName() + " heeft een volume van: " + form1.calculateVolume());
+
+        Form form2 = new Cone(2, 5);
+//        System.out.println(form2.getName() + " heeft een volume van: " + form2.calculateVolume());
+
+        ArrayList<Form> forms = new ArrayList<>();
+        forms.add(form1);
+        forms.add(form2);
+
+        SQL.addForms(forms);
+
+//        ArrayList<Form> forms = SQL.readForms();
+//        for (Form form : forms) {
+//            System.out.println(form);
+//        }
+//
+//        SQL.deleteForms();
+
+//        ObjectIO.writeFormFile(forms);
+//
+//        ArrayList<Form> formsFromFile = ObjectIO.readFormFile();
+//
+//        for (Form form : formsFromFile) {
+//            System.out.println(form.toString());
+//        }
 
 //        Cone eersteCone = new Cone(1, 5, 3);
 //        double volume = eersteCone.calculateVolume();

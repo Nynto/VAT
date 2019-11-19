@@ -9,302 +9,96 @@ public class SQL {
     private static String user = "root";
     private static String password = "";
 
-    public static ArrayList<Block> readBlocks()  {
+    public static ArrayList<Form> readForms()  {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        ArrayList<Block> blocks = new ArrayList<>();
+        ArrayList<Form> forms = new ArrayList<>();
         PreparedStatement statement = null;
+
         try {
-            statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.block;");
+            statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.form;");
             ResultSet res = dbc.select(statement);
             while(res.next()){
-                Block block = new Block(
-                        res.getInt("ID"),
-                        res.getDouble("length"),
-                        res.getDouble("width"),
-                        res.getDouble("height")
-                );
-                blocks.add(block);
+                String type = res.getString("type");
+
+                switch (type) {
+                    case "block":
+                        Form block = new Block(
+                                res.getDouble("length"),
+                                res.getDouble("width"),
+                                res.getDouble("height")
+                        );
+                        forms.add(block);
+                        break;
+                    case "cone":
+                        Form cone = new Cone(
+                                res.getDouble("radius"),
+                                res.getDouble("height")
+                        );
+                        forms.add(cone);
+                        break;
+                    case "cylinder":
+                        Form cylinder = new Cylinder(
+                                res.getDouble("radius"),
+                                res.getDouble("height")
+                        );
+                        forms.add(cylinder);
+                        break;
+                    case "pyramid":
+                        Form pyramid = new Pyramid(
+                                res.getDouble("length"),
+                                res.getDouble("width"),
+                                res.getDouble("height")
+                        );
+                        forms.add(pyramid);
+                        break;
+                    case "sphere":
+                        Form sphere = new Sphere(
+                                res.getDouble("radius")
+                        );
+                        forms.add(sphere);
+                        break;
+                }
             }
             dbc.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return blocks;
+        return forms;
     }
 
-    public static void addBlocks(ArrayList<Block> blocks) {
+    public static void addForms(ArrayList<Form> forms) {
+        deleteForms();
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        for (Block block : blocks) {
+        for (Form form : forms) {
             PreparedStatement statement = null;
             try {
-                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.block (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
-                statement.setInt(1, block.getId());
-                statement.setDouble(2, block.getLength());
-                statement.setDouble(3, block.getWidth());
-                statement.setDouble(4, block.getHeight());
+                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.form (`type`, `length`, `width`, `height`, `radius`) VALUES (?, ?, ?, ?, ?);");
+                statement.setString(1, form.getType());
+                statement.setDouble(2, form.getLength());
+                statement.setDouble(3, form.getWidth());
+                statement.setDouble(4, form.getHeight());
+                statement.setDouble(5, form.getRadius());
                 dbc.insert(statement);
-                dbc.closeConnection();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        dbc.closeConnection();
     }
 
-    public static void deleteBlock(Block block) {
+    public static void deleteForms() {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
-        ArrayList<Block> blocks = new ArrayList<>();
         PreparedStatement statement = null;
         try {
-            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.block WHERE `ID` = ?;");
-            statement.setInt(1, block.getId());
-            dbc.delete(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList<Cone> readCones()  {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Cone> cones = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.cone;");
-            ResultSet res = dbc.select(statement);
-            while(res.next()){
-                Cone cone = new Cone(
-                        res.getInt("ID"),
-                        res.getDouble("radius"),
-                        res.getDouble("height")
-                );
-                cones.add(cone);
-            }
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return cones;
-    }
-
-    public static void addCones(ArrayList<Cone> cones) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        for (Cone cone : cones) {
-            PreparedStatement statement = null;
-            try {
-                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cone (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
-                statement.setInt(1, cone.getId());
-                statement.setDouble(2, cone.getRadius());
-                statement.setDouble(3, cone.getHeight());
-                dbc.insert(statement);
-                dbc.closeConnection();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void deleteCone(Cone cone) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Cone> cones = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.cone WHERE `ID` = ?;");
-            statement.setInt(1, cone.getId());
-            dbc.delete(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList<Cylinder> readCylinders()  {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Cylinder> cylinders = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.cylinder;");
-            ResultSet res = dbc.select(statement);
-            while(res.next()){
-                Cylinder cylinder = new Cylinder(
-                        res.getInt("ID"),
-                        res.getDouble("radius"),
-                        res.getDouble("height")
-                );
-                cylinders.add(cylinder);
-            }
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return cylinders;
-    }
-
-    public static void addCylinders(ArrayList<Cylinder> cylinders) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        for (Cylinder cylinder : cylinders) {
-            PreparedStatement statement = null;
-            try {
-                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.cylinder (`ID`, `radius`, `height`) VALUES (?, ?, ?);");
-                statement.setInt(1, cylinder.getId());
-                statement.setDouble(2, cylinder.getRadius());
-                statement.setDouble(3, cylinder.getHeight());
-                dbc.insert(statement);
-                dbc.closeConnection();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void deleteCylinder(Cylinder cylinder) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Cylinder> cylinders = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.cylinder WHERE `ID` = ?;");
-            statement.setInt(1, cylinder.getId());
-            dbc.delete(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList<Pyramid> readPyramids()  {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Pyramid> pyramids = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.pyramid;");
-            ResultSet res = dbc.select(statement);
-            while(res.next()){
-                Pyramid pyramid = new Pyramid(
-                        res.getInt("ID"),
-                        res.getDouble("length"),
-                        res.getDouble("width"),
-                        res.getDouble("height")
-                );
-                pyramids.add(pyramid);
-            }
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return pyramids;
-    }
-
-    public static void addPyramids(ArrayList<Pyramid> pyramids) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        for (Pyramid pyramid : pyramids) {
-            PreparedStatement statement = null;
-            try {
-                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.pyramid (`ID`, `length`, `width`, `height`) VALUES (?, ?, ?, ?);");
-                statement.setInt(1, pyramid.getId());
-                statement.setDouble(2, pyramid.getLength());
-                statement.setDouble(3, pyramid.getWidth());
-                statement.setDouble(4, pyramid.getHeight());
-                dbc.insert(statement);
-                dbc.closeConnection();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void deletePyramid(Pyramid pyramid) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Pyramid> pyramids = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.pyramid WHERE `ID` = ?;");
-            statement.setInt(1, pyramid.getId());
-            dbc.delete(statement);
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static ArrayList<Sphere> readSpheres()  {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Sphere> spheres = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("SELECT * FROM vat.sphere;");
-            ResultSet res = dbc.select(statement);
-            while(res.next()){
-                Sphere sphere = new Sphere(
-                        res.getInt("ID"),
-                        res.getDouble("radius")
-                );
-                spheres.add(sphere);
-            }
-            dbc.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return spheres;
-    }
-
-    public static void addSpheres(ArrayList<Sphere> spheres) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        for (Sphere sphere : spheres) {
-            PreparedStatement statement = null;
-            try {
-                statement = dbc.getConnection().prepareStatement("INSERT INTO vat.sphere (`ID`, `radius`) VALUES (?, ?);");
-                statement.setInt(1, sphere.getId());
-                statement.setDouble(2, sphere.getRadius());
-                dbc.insert(statement);
-                dbc.closeConnection();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void deleteSphere(Sphere sphere) {
-        DatabaseConnection dbc = new DatabaseConnection();
-        dbc.connectToDatabase(url,user,password);
-
-        ArrayList<Sphere> spheres = new ArrayList<>();
-        PreparedStatement statement = null;
-        try {
-            statement = dbc.getConnection().prepareStatement("DELETE FROM vat.sphere WHERE `ID` = ?;");
-            statement.setInt(1, sphere.getId());
-            dbc.delete(statement);
+            statement = dbc.getConnection().prepareStatement("TRUNCATE TABLE vat.form;");
+            dbc.truncate(statement);
             dbc.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
