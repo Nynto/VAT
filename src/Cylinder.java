@@ -4,7 +4,7 @@ public class Cylinder extends Form {
     private double height;
 
     public Cylinder(double radius, double height) {
-        this.name = "Cylinder " + radius + " " + height;
+        this.name = "Cylinder (R: " + radius + " H: " + height + ")";
         this.type = "cylinder";
         this.radius = radius;
         this.height = height;

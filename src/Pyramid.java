@@ -5,7 +5,7 @@ public class Pyramid extends Form {
     private double height;
 
     public Pyramid(double length, double width, double height) {
-        this.name = "Pyramid " + length + " " + width + " " + height;
+        this.name = "Pyramid (L: " + length + " W: " + width + " H: " + height + ")";
         this.type = "pyramid";
         this.length = length;
         this.width = width;

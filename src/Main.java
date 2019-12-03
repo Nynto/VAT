@@ -5,11 +5,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Form form1 = new Block(2, 5, 3);
-//        System.out.println(form1.getName() + " heeft een volume van: " + form1.calculateVolume());
+        Form form1 = new Block(2.5, 5.5, 3.9);
+        System.out.println(form1);
 
         Form form2 = new Cone(2, 5);
-//        System.out.println(form2.getName() + " heeft een volume van: " + form2.calculateVolume());
+        System.out.println(form2);
 
         ArrayList<Form> forms = new ArrayList<>();
         forms.add(form1);

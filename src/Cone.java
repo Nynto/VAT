@@ -4,7 +4,7 @@ public class Cone extends Form {
     private double height;
 
     public Cone(double radius, double height) {
-        this.name = "Cone " + radius + " " + height;
+        this.name = "Cone (R: " + radius + " H: " + height + ")";
         this.type = "cone";
         this.radius = radius;
         this.height = height;

@@ -12,10 +12,6 @@ abstract class Form implements Serializable {
 
     abstract public double calculateVolume();
 
-    public String getName() {
-        return name;
-    }
-
     public String getType() {
         return type;
     }
@@ -38,6 +34,6 @@ abstract class Form implements Serializable {
 
     @Override
     public String toString() {
-        return name + " volume: " + calculateVolume();
+        return name + " volume: " + (double) Math.round(calculateVolume() * 100) / 100;
     }
 }
