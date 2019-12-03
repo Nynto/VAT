@@ -5,32 +5,32 @@ import java.io.Serializable;
 public abstract class Form implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    protected String name;
-    protected String type;
-    protected double length;
-    protected double width;
-    protected double height;
-    protected double radius;
+    String name;
+    String type;
+    double length;
+    double width;
+    double height;
+    double radius;
 
     abstract public double calculateVolume();
 
-    public String getType() {
+    String getType() {
         return type;
     }
 
-    public double getLength() {
+    double getLength() {
         return length;
     }
 
-    public double getWidth() {
+    double getWidth() {
         return width;
     }
 
-    public double getHeight() {
+    double getHeight() {
         return height;
     }
 
-    public double getRadius() {
+    double getRadius() {
         return radius;
     }
 

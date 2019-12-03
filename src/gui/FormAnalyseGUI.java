@@ -8,10 +8,10 @@ import javax.swing.*;
 public abstract class FormAnalyseGUI extends JPanel implements Runnable {
 
     private static String[] allForms = new String[]{"Choose a form!", "Block", "Cone", "Cylinder", "Pyramid", "Sphere"};
-    public static ArrayList<Form> forms = new ArrayList<>();
-    public static DefaultListModel<Object> model = new DefaultListModel<>();
+    static ArrayList<Form> forms = new ArrayList<>();
+    static DefaultListModel<Object> model = new DefaultListModel<>();
     private static JList<Object> listForms = new JList<>(model);
-    public static Object[] listValues = forms.toArray();
+    private static Object[] listValues = forms.toArray();
 
     public static void main(String[] args) {
         int VERT_GAP = 10;

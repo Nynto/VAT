@@ -2,14 +2,14 @@ package vat;
 
 import java.sql.*;
 
-public class DatabaseConnection {
+class DatabaseConnection {
 
     private Connection con;
 
-    public DatabaseConnection() {
+    DatabaseConnection() {
     }
 
-    public Connection getConnection(){
+    Connection getConnection(){
         if(con != null){
             return con;
         }
@@ -17,7 +17,7 @@ public class DatabaseConnection {
         return null;
     }
 
-    public void connectToDatabase(String url, String user, String password){
+    void connectToDatabase(String url, String user, String password){
         try{
             this.con = DriverManager.getConnection(
                     url, user, password
@@ -29,7 +29,7 @@ public class DatabaseConnection {
         }
     }
 
-    public void closeConnection(){
+    void closeConnection(){
         try {
             con.close();
         } catch (SQLException e) {
@@ -37,7 +37,7 @@ public class DatabaseConnection {
         }
     }
 
-    public ResultSet select(PreparedStatement statement){
+    ResultSet select(PreparedStatement statement){
         ResultSet rs = null;
         try {
             rs = statement.executeQuery();
@@ -48,7 +48,7 @@ public class DatabaseConnection {
         }
     }
 
-    public boolean insert(PreparedStatement statement){
+    boolean insert(PreparedStatement statement){
         try {
             int inserted = statement.executeUpdate();
             if(inserted>0){
@@ -65,7 +65,7 @@ public class DatabaseConnection {
         }
     }
 
-    public boolean truncate(PreparedStatement statement){
+    boolean truncate(PreparedStatement statement){
         try {
             statement.executeUpdate();
             System.out.println("Truncated Succesfully");

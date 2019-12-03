@@ -93,7 +93,7 @@ public class SQL {
         dbc.closeConnection();
     }
 
-    public static void deleteForms() {
+    private static void deleteForms() {
         DatabaseConnection dbc = new DatabaseConnection();
         dbc.connectToDatabase(url,user,password);
 
