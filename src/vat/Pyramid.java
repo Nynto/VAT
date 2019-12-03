@@ -1,3 +1,5 @@
+package vat;
+
 public class Pyramid extends Form {
 
     public Pyramid(double length, double width, double height) {

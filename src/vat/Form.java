@@ -1,6 +1,8 @@
+package vat;
+
 import java.io.Serializable;
 
-abstract class Form implements Serializable {
+public abstract class Form implements Serializable {
 
     private static final long serialVersionUID = 1L;
     protected String name;
