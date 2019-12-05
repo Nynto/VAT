@@ -76,6 +76,7 @@ public abstract class FormAnalyseGUI extends JPanel implements Runnable {
         btnDelete.addActionListener(e -> {
 
             try {
+                listForms.getSelectedValue().equals(listForms.getSelectedValue());
                 Object deletedForm = listForms.getSelectedValue();
                 model.removeElement(deletedForm);
                 forms.remove(deletedForm);
