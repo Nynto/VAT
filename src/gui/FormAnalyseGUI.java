@@ -11,7 +11,7 @@ public abstract class FormAnalyseGUI extends JPanel implements Runnable {
     static ArrayList<Form> forms = new ArrayList<>();
     static DefaultListModel<Object> model = new DefaultListModel<>();
     private static JList<Object> listForms = new JList<>(model);
-    private static Object[] listValues = forms.toArray();
+    static Object[] listValues = forms.toArray();
 
     public static void main(String[] args) {
         int VERT_GAP = 10;
@@ -100,19 +100,18 @@ public abstract class FormAnalyseGUI extends JPanel implements Runnable {
         volumePanel.add(lblTotalVolumeForm);
 
         btnSave.addActionListener(e -> {
-            ObjectIO.writeFormFile(forms);
+            int i = forms.size();
+            if (i == 0) {
+                JOptionPane.showMessageDialog(null, "There are no forms to save.");
+            } else {
+                SaveGUI save = new SaveGUI();
+                save.run();
+            }
         });
 
         btnLoad.addActionListener(e -> {
-            model.removeAllElements();
-            ArrayList<Form> formsFromFile = ObjectIO.readFormFile();
-
-            listValues = formsFromFile.toArray();
-            forms = formsFromFile;
-
-            for (Object s : listValues) {
-                model.addElement(s);
-            }
+            LoadGUI load = new LoadGUI();
+            load.run();
         });
 
         btnTotalVolume.addActionListener(e -> {
@@ -143,6 +142,7 @@ public abstract class FormAnalyseGUI extends JPanel implements Runnable {
         frameGUI.getContentPane().add(mainPanel, BorderLayout.CENTER);
         frameGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frameGUI.pack();
+        frameGUI.setSize(800,500);
         frameGUI.setVisible(true);
     }
 }

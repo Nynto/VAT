@@ -12,7 +12,7 @@ public abstract class Form implements Serializable {
     double height;
     double radius;
 
-    abstract public double calculateVolume();
+    public abstract double calculateVolume();
 
     String getType() {
         return type;
